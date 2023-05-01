@@ -18,9 +18,35 @@ public class TestCalc {
         // validar o teste
         assertEquals(resultadoObtido, resultadoEsperado);
     }
-
     @Test
-    public void testarMain(){
+    public void testarSubtracao2Num(){
+        int num1 = 10;
+        int num2 = 2;
+        int resultadoEsperado = 8;
 
+        int resultadoObtido = Calc.subtrairDoisNumeros(num1, num2);
+
+        assertEquals(resultadoObtido, resultadoEsperado);
     }
+    @Test
+    public void testarMultiplicacao2Num(){
+        int num1 = 10;
+        int num2 = 2;
+        int resultadoEsperado = 20;
+
+        int resultadoObtido = Calc.multiplicarDoisNumeros(num1, num2);
+
+        assertEquals(resultadoObtido, resultadoEsperado);
+    }
+    @Test
+    public void testarDivisao2Num(){
+        int num1 = 10;
+        int num2 = 2;
+        int resultadoEsperado = 5;
+
+        int resultadoObtido = Calc.dividirDoisNumeros(num1, num2);
+
+        assertEquals(resultadoObtido, resultadoEsperado);
+    }
+
 }
