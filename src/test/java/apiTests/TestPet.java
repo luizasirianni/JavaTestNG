@@ -37,4 +37,21 @@ public class TestPet {
                 .body("tags.name", contains("Animal vermifugado e com todas as vacinas"));
                 //.body("tags.name", contains("vacinas"));
   }
+
+  @Test
+    public void getPet(){ //nao necessita json
+        String petId = "1000";
+
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .get("https://petstore.swagger.io/v2/pet/" + petId)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("name", is("Snoopy"))
+                .body("status", is("available"));
+
+  }
 }
