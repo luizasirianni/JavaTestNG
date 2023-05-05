@@ -1,0 +1,18 @@
+{
+  "id": 1000,
+  "category": {
+    "id": 0,
+    "name": "dog"
+  },
+  "name": "Snoopy",
+  "photoUrls": [
+    "string"
+  ],
+  "tags": [
+    {
+      "id": 0,
+      "name": "Animal vermifugado e com todas as vacinas"
+    }
+  ],
+  "status": "available"
+}
