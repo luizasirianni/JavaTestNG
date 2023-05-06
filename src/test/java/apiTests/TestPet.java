@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.is;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 public class TestPet {
 
@@ -34,8 +33,10 @@ public class TestPet {
                 .body("id", is(1000))
                 .body("name", is("Snoopy"))
                 .body("category.name", is("dog"))
-                .body("tags.name", contains("Animal vermifugado e com todas as vacinas"));
-                //.body("tags.name", contains("vacinas"));
+                .body("tags.name[0]", stringContainsInOrder("vermifugado"))
+                .body("tags.id[0]", is(3))
+                .body("tags.name[1]", stringContainsInOrder("vacina"))
+                .body("tags.id[1]", is(4));
   }
 
   @Test
