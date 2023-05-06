@@ -10,8 +10,12 @@
   ],
   "tags": [
     {
-      "id": 0,
-      "name": "Animal vermifugado e com todas as vacinas"
+      "id": 3,
+      "name": "Animal vermifugado na primeira semana"
+    },
+    {
+      "id": 4,
+      "name": "vacinado na segunda semana"
     }
   ],
   "status": "available"
