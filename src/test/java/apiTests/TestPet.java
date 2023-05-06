@@ -38,7 +38,6 @@ public class TestPet {
                 .body("tags.name[1]", stringContainsInOrder("vacina"))
                 .body("tags.id[1]", is(4));
   }
-
   @Test
     public void getPet(){ //nao necessita json
         String petId = "1000";
