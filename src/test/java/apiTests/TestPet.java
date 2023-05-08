@@ -75,8 +75,18 @@ public class TestPet {
                 .body("status", is("sold"));
     }
 
-    @Test (priority = 1, dependsOnMethods = {"updatePet"})
+    @Test (priority = 3, dependsOnMethods = {"updatePet"})
     public void deletePet() throws IOException {
-
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .delete(uri + "/" + petID)
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("code", is(200))
+                .body("type", is("unknown"))
+                .body("message", is(Integer.toString(petID)));
     }
 }
