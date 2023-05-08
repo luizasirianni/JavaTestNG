@@ -55,4 +55,20 @@ public class TestPet {
 
 
   }
+
+  @Test
+    public void updatePet() throws IOException { //alterar pet
+        String jsonBody = readJson("src/test/resources/data/newPet.json");
+
+        given()
+                .contentType("application/json")
+                .log().all()
+                .body(jsonBody) //json a ser transmitido para alteraçao
+        .when()
+                .put("https://petstore.swagger.io/v2/pet")
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("status", is("sold"));
+    }
 }
