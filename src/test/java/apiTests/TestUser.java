@@ -89,10 +89,30 @@ public class TestUser {
         .extract()
                 .path("message")
                 ;
+        System.out.println("=============================");
         System.out.println("Response message: " + message);
         token = message.substring(23);
         System.out.println("Token: " + token);
+        System.out.println("=============================");
     }
+
+
+    @Test(priority = 3, dependsOnMethods = {"loginUser"})
+    public void logoutUser(){
+        given()
+                .contentType("application/json")
+                .log().all()
+        .when()
+                .get(uri + "/logout")
+        .then()
+                .log().all()
+                .statusCode(200)
+                .body("code", is(200))
+                .body("type", is("unknown"))
+                .body("message", is("ok"))
+                ;
+    }
+
 
 
 
