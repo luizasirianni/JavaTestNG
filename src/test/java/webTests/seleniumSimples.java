@@ -10,12 +10,16 @@ import org.testng.annotations.Test;
 import utils.Evidences;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.assertTrue;
 public class seleniumSimples {
 
     WebDriver driver;
     Evidences evidences;
+    static String dataHora = new SimpleDateFormat("yyyy-MM-dd HH-mm").format(Calendar.getInstance().getTime());
     @BeforeTest
     public void inicio(){
 
@@ -32,37 +36,37 @@ public class seleniumSimples {
     }
     @Test
     public void consultarCursoPython() throws IOException {
-
+        String testCase = "consultar curso python";
         driver.get("https://www.alura.com.br/");
         //get() para fazer simples consultas na página, inspecionar elementos
         //navigate() para interagir com a página
         driver.manage().window().maximize();
-        evidences.print(driver, "Passo 1 - abriu o site e maximizou a janela");
+        evidences.print(driver, testCase, dataHora, "Passo 1 - abriu o site e maximizou a janela");
 
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).click();
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys("python");
-        evidences.print(driver, "Passo 2 - digitou nome do curso no campo de pesquisa");
+        evidences.print(driver, testCase, dataHora,"Passo 2 - digitou nome do curso no campo de pesquisa");
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys(Keys.ENTER);
 
         assertTrue(driver.findElement(By.cssSelector("#busca-form > h2")).getText().contains("quer aprender?"));
-        evidences.print(driver, "Passo 3 - apareceu a lista de cursos");
+        evidences.print(driver, testCase, dataHora, "Passo 3 - apareceu a lista de cursos");
 
     }
     @Test
     public void consultarCursoJava() throws IOException {
-
+        String testCase = "consultar curso java";
         driver.get("https://www.alura.com.br/");
 
         driver.manage().window().maximize();
-        evidences.print(driver, "Passo 1 - abriu o site e maximizou a janela");
+        evidences.print(driver, testCase, dataHora,"Passo 1 - abriu o site e maximizou a janela");
 
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).click();
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys("java");
-        evidences.print(driver, "Passo 2 - digitou nome do curso no campo de pesquisa");
+        evidences.print(driver, testCase, dataHora, "Passo 2 - digitou nome do curso no campo de pesquisa");
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys(Keys.ENTER);
 
         assertTrue(driver.findElement(By.cssSelector("#busca-form > h2")).getText().contains("quer aprender?"));
-        evidences.print(driver, "Passo 3 - apareceu a lista de cursos");
+        evidences.print(driver, testCase, dataHora, "Passo 3 - apareceu a lista de cursos");
     }
 
 }
