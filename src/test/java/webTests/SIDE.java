@@ -26,8 +26,13 @@ public class SIDE {
         System.setProperty("webdriver.chrome.driver", "my_drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(60000, TimeUnit.MILLISECONDS);
-        js = (JavascriptExecutor) driver;
+        js = (JavascriptExecutor) driver; //permite executar comandos JavaScript no navegador diferentes partes do código.
         vars = new HashMap<String, Object>();
+        //HashMap é usado para armazenar variáveis ou objetos que serão compartilhados entre
+        //O tipo definido para as chaves é "String"
+        //e o tipo definido para os valores é "Object".
+        //O HashMap pode armazenar informações, como dados de teste, configurações, valores de entrada ou qualquer outra informação
+        //que precise ser acessada ou modificada em diferentes partes do código de teste.
     }
     @AfterMethod
     public void tearDown() {
