@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class Evidences {
 
-    public void print(WebDriver driver, String name) throws IOException {
+    public void print(WebDriver driver, String testCase, String dataHora, String name) throws IOException {
         File photo = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         //System.out.println("dataHora: " + dataHora);
-        FileUtils.copyFile(photo, new File("target/prints/" + name + ".png"));
+        FileUtils.copyFile(photo, new File("target/prints/" + testCase + "/" + dataHora + "/" + name + ".png"));
     }
 }
