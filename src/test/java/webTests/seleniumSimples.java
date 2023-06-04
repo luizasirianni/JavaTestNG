@@ -73,17 +73,25 @@ public class seleniumSimples {
     @Test
     public void consultarCursoJava() throws IOException {
         String testCase = "consultar curso java";
+        logs.registerCSV(testCase, "iniciou o teste");
+
         driver.get("https://www.alura.com.br/");
+        logs.registerCSV(testCase, "abriu o site");
 
         driver.manage().window().maximize();
+        logs.registerCSV(testCase, "maximizou a janela");
         evidences.print(driver, testCase, dataHora,"Passo 1 - abriu o site e maximizou a janela");
 
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).click();
+        logs.registerCSV(testCase, "clicou no campo de busca");
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys("java");
+        logs.registerCSV(testCase, "escreveu na caixa de pesquisa");
         evidences.print(driver, testCase, dataHora, "Passo 2 - digitou nome do curso no campo de pesquisa");
         driver.findElement(By.id("header-barraBusca-form-campoBusca")).sendKeys(Keys.ENTER);
+        logs.registerCSV(testCase, "apertou enter");
 
         assertTrue(driver.findElement(By.cssSelector("#busca-form > h2")).getText().contains("quer aprender?"));
+        logs.registerCSV(testCase, "confirmou o texto da página de pesquisa");
         evidences.print(driver, testCase, dataHora, "Passo 3 - apareceu a lista de cursos");
     }
 }
